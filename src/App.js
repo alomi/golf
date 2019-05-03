@@ -1,29 +1,15 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import StartMessage from './components/StartMessage'
+import Header from './components/Header'
+
+let userName = "Alojz";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <StartMessage name={"Alojz"} />
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <React.Fragment>
+            <Header name={userName}/>
+        </React.Fragment>
+    );
 }
 
 export default App;
