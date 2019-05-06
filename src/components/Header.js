@@ -1,5 +1,5 @@
 import StartMessage from "./StartMessage";
-import logo from "../logo.svg";
+import logo from "../static/images/logo.svg";
 import LearnReact from "./LearnReact";
 import React from "react";
 import PropTypes from "prop-types";
