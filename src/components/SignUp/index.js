@@ -4,6 +4,7 @@ import { compose } from 'recompose';
 
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
+import * as ROLES from '../../constants/roles';
 
 const SignUpPage = () => (
     <div>
@@ -17,6 +18,7 @@ const INITIAL_STATE = {
     email: '',
     passwordOne: '',
     passwordTwo: '',
+    isAdmin: false,
     error: null,
 };
 
@@ -28,7 +30,15 @@ class SignUpFormBase extends Component {
     }
 
     onSubmit = event => {
-        const { username, email, passwordOne } = this.state;
+        const { username, email, passwordOne, isAdmin } = this.state;
+
+        const roles = {};
+        if (isAdmin) {
+            roles[ROLES.ADMIN] = ROLES.ADMIN;
+        } else {
+            roles[ROLES.USER] = ROLES.USER;
+        }
+
 
         this.props.firebase
             .doCreateUserWithEmailAndPassword(email, passwordOne)
@@ -39,6 +49,7 @@ class SignUpFormBase extends Component {
                     .set({
                         username,
                         email,
+                        roles
                     });
             })
             .catch(error => {
