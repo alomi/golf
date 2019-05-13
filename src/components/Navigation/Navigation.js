@@ -5,9 +5,10 @@ import SignOutButton from '../SignOut';
 import * as ROUTES from '../../constants/routes';
 import {AuthUserContext} from '../Session';
 import * as ROLES from "../../constants/roles";
+import './Navigation.css'
 
 const Navigation = () => (
-    <div>
+    <div className="container">
         <AuthUserContext.Consumer>
             {authUser =>
                 authUser ? (
@@ -20,34 +21,34 @@ const Navigation = () => (
     </div>
 );
 
-const NavigationAuth = ({ authUser }) => (
-    <ul>
-        <li>
+const NavigationAuth = ({authUser}) => (
+    <ul className="navigation-list">
+        <li className="navigation-list-item">
             <Link to={ROUTES.LANDING}>Landing</Link>
         </li>
-        <li>
+        <li className="navigation-list-item">
             <Link to={ROUTES.HOME}>Home</Link>
         </li>
-        <li>
+        <li className="navigation-list-item">
             <Link to={ROUTES.ACCOUNT}>Account</Link>
         </li>
         {!!authUser.roles[ROLES.ADMIN] && (
-            <li>
+            <li className="navigation-list-item">
                 <Link to={ROUTES.ADMIN}>Admin</Link>
             </li>
         )}
-        <li>
+        <li className="navigation-list-item">
             <SignOutButton/>
         </li>
     </ul>
 );
 
 const NavigationNonAuth = () => (
-    <ul>
-        <li>
+    <ul className="navigation-list">
+        <li className="navigation-list-item">
             <Link to={ROUTES.LANDING}>Landing</Link>
         </li>
-        <li>
+        <li className="navigation-list-item">
             <Link to={ROUTES.SIGN_IN}>Sign In</Link>
         </li>
     </ul>
